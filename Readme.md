@@ -3,7 +3,7 @@ I wrote this collection of scripts sometime in 2022 to get an educated guess abo
 
 ## In it current state it outputs second moments of area (Iy, Ix) and average drag (Cd) over an averaged angle of attach range from -1 to 1 degree.
 
-Drag is averaged over a small AOA window to make the simulation results more stable/representative. Adding any other metric such as rigidity agaist torsion is possible.
+Drag is averaged over a small AOA window to make the simulation results more stable/representative. Adding any other metric such as rigidity against torsion is possible.
 
 ### Average drag (Cd) over AOA
 ![Average drag over AOA](https://github.com/cdorfer/hydrofoil-profile-selection/blob/master/example_images/cd_vs_aoa.png)
@@ -36,7 +36,7 @@ Create a virtual environment and install dependencies (Python 3.8 for sure works
 * average submerged mast thickness: ~14 mm (Armstrong's 100 cm mast is 15 mm, Sabfoil uses ~14 mm, Axis' 19 mm aluminum mast is definitely too thick)
 
 
-## Get all symmetric profiles that roughly have the right chord length to thickness ratio from online database
+## Get all symmetric profiles that roughly have the right chord length to thickness ratio from online database (or parameterize some yourself)
 
 An airfoil database like for example [airfoiltools.com](airfoiltools.com) can be searched for profiles with 0% camber (symmetrical profile) between a minimum and maximum thickness to length ratio. 14 mm / 125 mm = ~11.2% so let's consider profile between 10 - 12.5%. For a deep tuttle mast that goes flush into the box the limiting factor would be the 16 mm width at the box with a chord length of roughly 156 mm, thus about 10.25%. Alternatively the mast can be constructed similar to the 'Slingshot Ghost Whisperer' deep tuttle windfoil mast where the profile protrudes the deep tuttle. This however leaves pressure marks on your board if tolerances are not perfect.
 
@@ -46,7 +46,7 @@ Use `airfoiltools_fetching/download_files.py` to actually download a .dat file f
 
 ### Run simulation
 
-To calculate the lift/drag/momentum,etc. of each profile in `profiles_to_consider` first adapt the parameters chord_length_m and flow_speed_m_s in `python run_sim.py` and then run it. This will loop through all profiles, run the viiflow simulation for them and dump the results in a pickle file (`results.pkl`). On a newer desktop machine the calculations take ~3 seconds per profile.
+To calculate the lift/drag/momentum,etc. of each profile in `profiles_to_consider` first adapt the parameters chord_length_m and flow_speed_m_s in `run_sim.py` and then run it. This will loop through all profiles, run the viiflow simulation for them and dump the results in a pickle file (`results.pkl`). On a newer desktop machine the calculations take ~3 seconds per profile.
 
 
 ## How to select the best profile?
