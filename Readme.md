@@ -64,4 +64,4 @@ Running `compare.py` extracts the results from `results.pkl`, calculates the ave
 
 ### Contribute
 
-I would be very happy to transform this collection of outdated python 3.8 scripts into something usable for everybody. But due to other projects it's not on top of my priorities list (at least not until I need it again myself).
+I would be very happy to transform this collection of outdated python 3.8 scripts into something usable for everybody. But due to other projects it's not on top of my priorities list (at least not until I need it again myself). For any discussion about this send me an email (address see source code) or contact me on [builders-blog.com](https://builders-blog.com/user/Christian).

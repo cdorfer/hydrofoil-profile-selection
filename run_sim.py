@@ -1,3 +1,4 @@
+#author: email@dorfer.ch
 import viiflow as vf
 import viiflowtools.vf_tools as vft
 import numpy as np

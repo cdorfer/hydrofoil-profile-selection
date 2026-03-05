@@ -1,3 +1,4 @@
+#author: email@dorfer.ch
 import pickle
 import viiflowtools.vf_tools as vft
 import numpy as np
