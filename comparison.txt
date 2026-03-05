@@ -1,0 +1,34 @@
+Axis 19mm Mast
+chord: 120 mm
+thickness: 19 mm
+Breite Baseplate: 116
+
+Sabfoil 91 Kitefoil Mast
+distance from plate,  chord,  thickness
+20                    117     14.5
+50                    110     14
+70                    107     14
+85                    105     12.8
+Breite Baseplate 138
+Länge Baseplate 225
+
+Sabfoil 92 Windsurf Foil
+distance from plate,  chord,  thickness
+20                    142     17
+50                    136     16
+70                    131     16
+85                    125     14.5
+Breite Baseplate: 140
+Länge Baseplate: 240
+
+
+Selected chord:
+140mm chord bei 16mm dicke 20cm unter base plate
+120mm chord bei 13mm dicke an der Fuselage
+
+
+--> average chord: 125mm
+--> design speed: 20km/h
+
+Lochabstand in Fahrtrichtung: 165
+Lochabstand queer dazu: 90
