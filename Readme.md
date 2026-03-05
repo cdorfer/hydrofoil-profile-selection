@@ -1,6 +1,22 @@
 # Some simulation scripts to find the ideal hydrofoil profile
 I wrote this collection of scripts sometime in 2022 to get an educated guess about the ideal profile for my homemade carbon pumping mast. Surely, with some tweaks, such as segmentation of the wing, you can use it to optimize a whole wing design too. Feel free to use it any way you like. I would be extremely interested in the experimental verification of the results, so please let me know if you have ways to do that, or even better, some results. Kudos to the creator of [viiflow](https://viiflow.com/).
 
+## In it current state it outputs second moments of area (Iy, Ix) and average drag (Cd) over an averaged angle of attach range from -1 to 1 degree.
+
+Drag is averaged over a small AOA window to make the simulation results more stable/representative. Adding any other metric such as rigidity agaist torsion is possible.
+
+### Average drag (Cd) over AOA
+![Average drag over AOA](https://github.com/cdorfer/hydrofoil-profile-selection/blob/master/example_images/cd_vs_aoa.png)
+
+### Second moments of area (Iy, Ix) over average drag (Cd) for all simulated profiles
+![Second moments of area (Iy, Ix) over average drag (Cd) for all simulated profiles](https://github.com/cdorfer/hydrofoil-profile-selection/blob/master/example_images/cd_vs_I.png)
+
+### Average drag (Cd) for different geometries
+![Average drag (Cd) for different geometries](https://github.com/cdorfer/hydrofoil-profile-selection/blob/master/example_images/cd_for_profiles.png)
+
+### Second moments of area perpendicular to direction of motion (Iy) for different geometries
+![Second moments of area perpendicular to direction of motion (Iy) for different geometries](https://github.com/cdorfer/hydrofoil-profile-selection/blob/master/example_images/cd_for_profiles.png)
+
 
 ## Get it running with a virtual environment:
 Get the code from GitHub:
