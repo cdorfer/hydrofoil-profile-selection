@@ -62,3 +62,6 @@ The second moment of area can be calculated as shown on [this Wikipedia page](ht
 
 Running `compare.py` extracts the results from `results.pkl`, calculates the average coefficient of drag (c_d) between -1 and +1 degree AOA and plots it over AOA, second moments of area perpendicular to and parallel to the direction of travel for all simulated profiles.
 
+### Contribute
+
+I would be very happy to transform this collection of outdated python 3.8 scripts into something usable for everybody. But due to other projects it's not on top of my priorities list (at least not until I need it again myself).
