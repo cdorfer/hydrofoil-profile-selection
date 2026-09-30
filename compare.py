@@ -84,7 +84,7 @@ plt.savefig('cd_vs_aoa.png', bbox_inches='tight', dpi=300)
 
 
 #plot second moment of area vs drag
-fig2,ax2 = generate1DPlot(xlabel="Drag Coefficient C$_D$ [ ]", ylabel="~Iy [a.u.] Second Moment of Area Perpendicular to Direction of Travel", figsize=(28,14))
+fig2,ax2 = generate1DPlot(xlabel="Drag Coefficient C$_D$ [ ]", ylabel="~Ix [a.u.] Second Moment of Area Perpendicular to Direction of Travel", figsize=(28,14))
 
 airfoils2 = []
 texts = []
@@ -115,22 +115,22 @@ for key, avg_cd in airfoils1:
 
 	yvals = interpolate.interp1d(x,y, kind='cubic')
 	xvals = np.arange(0,1,0.002)
-	Iy = 2*np.sum([yvals(x)**2*0.002 for x in xvals])
+	Ix = 2*np.sum([yvals(x)**2*0.002 for x in xvals])
  
 	y_interp = yvals(xvals)
-	Ix = 2 * np.trapz(xvals**2 * y_interp, xvals)
+	Iy = 2 * np.trapz(xvals**2 * y_interp, xvals)
 
-	airfoils2.append([key, Iy, Ix, avg_cd, xvals, yvals])
-	texts.append(plt.text(avg_cd, Iy, f"{key.split('/')[1]}\nIy:{1000*Iy:.2f} Ix:{1000*Ix:.2f}\ncd:{avg_cd:.4f}"))
-	#ax2.plot(avg_cd, Iy, 'ro', color=Ix)
+	airfoils2.append([key, Ix, Iy, avg_cd, xvals, yvals])
+	texts.append(plt.text(avg_cd, Ix, f"{key.split('/')[1]}\nIx:{1000*Ix:.2f} Iy:{1000*Iy:.2f}\ncd:{avg_cd:.4f}"))
+	#ax2.plot(avg_cd, Ix, 'ro', color=Ix)
 
 cd = [e[3] for e in airfoils2]
-iy = [e[1] for e in airfoils2]
-ix = [e[2] for e in airfoils2]
+ix = [e[1] for e in airfoils2]
+iy = [e[2] for e in airfoils2]
 
-sc = ax2.scatter(cd, iy, c=ix, cmap='jet', s=50)
+sc = ax2.scatter(cd, ix, c=iy, cmap='jet', s=50)
 cbar = plt.colorbar(sc, ax=ax2)
-cbar.set_label("~Ix [a.u.] (Second Moment of Area in Direction of Travel)")
+cbar.set_label("~Iy [a.u.] (Second Moment of Area in Direction of Travel)")
 
 plt.grid(True, lw=0.5, color='grey')
 adjust_text(texts, only_move={'points':'y', 'texts':'y'}, arrowprops=dict(arrowstyle="->", color='white', lw=0.5))
@@ -147,7 +147,7 @@ scalarMap = cmx.ScalarMappable(norm=cNorm, cmap=jet)
 fig3,ax3 = generate1DPlot(xlabel="X [ ]", ylabel="Y [ ]", title='Drag for Different Geometries (worst (red) to best (blue))', figsize=(24,12))
 
 i = 0
-for key, Iy, Ix, avg_cd, xvals, yvals in airfoils2:
+for key, Ix, Iy, avg_cd, xvals, yvals in airfoils2:
 	i += 1
 	#skip every second profile otherwise plot gets too crowded
 	if(i%2 == 0):
@@ -166,25 +166,25 @@ plt.savefig('cd_for_profiles.png', bbox_inches='tight', dpi=300)
 
 #plot profiles curves and color them according to their second moment of area perpendicular to the direction of travel
 airfoils2.sort(key=lambda row: (row[1]), reverse=False)
-iys = [e[1] for e in airfoils2]
-cNorm = colors.Normalize(vmin=min(iys), vmax=max(iys))
+ixs = [e[1] for e in airfoils2]
+cNorm = colors.Normalize(vmin=min(ixs), vmax=max(ixs))
 scalarMap = cmx.ScalarMappable(norm=cNorm, cmap=jet) 
-fig3,ax3 = generate1DPlot(xlabel="X [ ]", ylabel="Y [ ]", title='Iy Different Airfoils (lowest (blue) to highest (red))', figsize=(24,12))
+fig3,ax3 = generate1DPlot(xlabel="X [ ]", ylabel="Y [ ]", title='Ix Different Airfoils (lowest (blue) to highest (red))', figsize=(24,12))
 
 i = 0
-for key, Iy, Ix, avg_cd, xvals, yvals in airfoils2:
+for key, Ix, Iy, avg_cd, xvals, yvals in airfoils2:
 	i += 1
 	#skip every second profile otherwise plot gets too crowded
 	if(i%2 == 0):
 		continue	
 	
-	colorVal = scalarMap.to_rgba(Iy)
+	colorVal = scalarMap.to_rgba(Ix)
 	ax3.plot(xvals, yvals(xvals), color=colorVal)
 	ax3.plot(xvals, -1*yvals(xvals), color=colorVal)
 
 
 plt.grid(True, lw=0.5, color='grey')
 fig3.show()
-plt.savefig('iy_for_profiles.png', bbox_inches='tight', dpi=300)
+plt.savefig('ix_for_profiles.png', bbox_inches='tight', dpi=300)
 
 
